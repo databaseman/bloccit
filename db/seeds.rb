@@ -7,6 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
  require 'random_data'
 
+# Create Unique Posts
+Post.find_or_create_by(
+     title:  'This is a unique Title',
+     body:   'This is a unique paragraph'
+)
+
  # Create Posts
  50.times do
    Post.create!(
