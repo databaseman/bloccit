@@ -5,16 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
 require 'random_data'
 
-# Create Unique Posts
-Post.find_or_create_by(
-  title:  'This is a unique Title',
-  body:   'This is a unique paragraph'
-)
+# Create Unique Advertisements
+10.times do
+  Advertisement.find_or_create_by!(
+    title:  RandomData.random_sentence,
+    body:   RandomData.random_paragraph,
+    price:  rand(999999)
+  )
+end
 
 # Create Posts
-50.times do
+10.times do
   Post.create!(
     title:  RandomData.random_sentence,
     body:   RandomData.random_paragraph
@@ -31,5 +35,6 @@ posts = Post.all
 end
 
 puts 'Seed finished'
+puts "#{Advertisement.count} advertisements created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
