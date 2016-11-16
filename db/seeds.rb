@@ -13,7 +13,7 @@ require 'random_data'
   Advertisement.find_or_create_by!(
     title:  RandomData.random_sentence,
     body:   RandomData.random_paragraph,
-    price:  rand(999999)
+    price:  rand(999_999)
   )
 end
 
