@@ -91,7 +91,7 @@ RSpec.describe QuestionsController, type: :controller do
       expect(updated_question.id).to eq my_question.id
       expect(updated_question.title).to eq new_title
       expect(updated_question.body).to eq new_body
-      expect( updated_question.resolved).to eq new_resolved
+      expect(updated_question.resolved).to eq new_resolved
     end
 
     it 'redirects to the updated question' do
