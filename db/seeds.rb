@@ -7,6 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'random_data'
 
+# Create Unique Questions
+10.times do
+  Question.find_or_create_by!(
+    title:  RandomData.random_sentence,
+    body:   RandomData.random_paragraph,
+    resolved:  false
+  )
+end
+
 # Create Unique Posts
 Post.find_or_create_by(
   title:  'This is a unique Title',
@@ -31,5 +40,6 @@ posts = Post.all
 end
 
 puts 'Seed finished'
+puts "#{Question.count} questions created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"

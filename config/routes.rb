@@ -7,6 +7,7 @@
 #   resources :posts only: [:edit, :update]
 #
 Rails.application.routes.draw do
+  resources :questions
   resources :posts
 
   get 'about' => 'welcome#about'
