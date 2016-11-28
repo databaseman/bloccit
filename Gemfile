@@ -13,8 +13,14 @@ source 'https://rubygems.org'
    gem 'pry-rails'
  end
  
+# To organize posts by topic we will need to build an association 
+# between topics and posts. To TDD this association we'll use the Shoulda gem. 
+# Shoulda makes it easier for us to write association tests by providing 
+# some handy methods that RSpec doesn't have. 
+
  group :development, :test do
    gem 'rspec-rails', '~> 3.0'
+   gem 'shoulda' 
  end
 
  # Use SCSS for stylesheets
