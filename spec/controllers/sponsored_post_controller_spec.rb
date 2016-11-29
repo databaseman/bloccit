@@ -34,6 +34,20 @@ RSpec.describe SponsoredPostController, type: :controller do
     end
   end
 
+  describe 'POST create' do
+    it 'increases the number of Post by 1' do
+       expect{post :create, topic_id: my_topic.id, sponsored_post: {title: RandomData.random_sentence, body: RandomData.random_paragraph, price: rand(999999999)}}.to change(Post,:count).by(1)
+    end
+    it 'assigns the new post to @post' do
+      post :create, topic_id: my_topic.id, sponsored_post: {title: RandomData.random_sentence, body: RandomData.random_paragraph, price: rand(999999999)}
+      expect(assigns(:sponsored_post)).to eq SponsoredPost.last
+    end
+    it 'redirects to the new post' do
+       post :create, topic_id: my_topic.id, sponsored_post: {title: RandomData.random_sentence, body: RandomData.random_paragraph, price: rand(999999999)}
+       expect(response).to redirect_to [my_topic, SponsoredPost.last]    
+    end
+  end
+
   describe "GET #edit" do
     it "returns http success" do
       get :edit
