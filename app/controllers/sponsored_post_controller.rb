@@ -17,7 +17,7 @@ class SponsoredPostController < ApplicationController
     @sponsored_post.topic = @topic
     if @sponsored_post.save # Calling database save/insert command
       flash[:notice] = 'SponsoredPost was saved.'
-      redirect_to [@topic, @sponsored_post] # Redirecting to @sponsored_post will direct the user to the sponsored_posts show view.
+      redirect_to [@topic, @sponsored_post] # Redirecting to @sponsored_post will direct the user to the sponsored_post show view.
     else
       flash.now[:alert] = 'There was an error saving the sponsored_post. Please try again.'
       render :new # render the new view again
