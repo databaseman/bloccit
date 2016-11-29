@@ -7,23 +7,27 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'random_data'
 
-# Create Unique Posts
-Post.find_or_create_by(
-  title:  'This is a unique Title',
-  body:   'This is a unique paragraph'
-)
-
 # Create Topics
- 15.times do
+5.times do
    Topic.create!(
      name:         RandomData.random_sentence,
      description:  RandomData.random_paragraph
    )
- end
- topics = Topic.all
- 
+end
+topics = Topic.all
+
+# Create SponsoredPosts
+10.times do
+  SponsoredPost.create!(
+    topic: topics.sample,
+    title:  RandomData.random_sentence,
+    body:   RandomData.random_paragraph,
+    price:  rand(999_999_999)
+  )
+end
+
 # Create Posts
-20.times do
+15.times do
   Post.create!(
     topic:  topics.sample,
     title:  RandomData.random_sentence,
@@ -33,7 +37,7 @@ end
 posts = Post.all
 
 # Create Comments
-100.times do
+35.times do
   Comment.create!(
     post: posts.sample,
     body: RandomData.random_paragraph
@@ -42,5 +46,6 @@ end
 
 puts 'Seed finished'
 puts "#{Topic.count} topics created"
+puts "#{SponsoredPost.count} sponsored created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
