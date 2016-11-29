@@ -36,7 +36,7 @@ RSpec.describe SponsoredPostController, type: :controller do
 
   describe 'POST create' do
     it 'increases the number of Post by 1' do
-       expect{post :create, topic_id: my_topic.id, sponsored_post: {title: RandomData.random_sentence, body: RandomData.random_paragraph, price: rand(999999999)}}.to change(Post,:count).by(1)
+       expect{post :create, topic_id: my_topic.id, sponsored_post: {title: RandomData.random_sentence, body: RandomData.random_paragraph, price: rand(999999999)}}.to change(SponsoredPost,:count).by(1)
     end
     it 'assigns the new post to @post' do
       post :create, topic_id: my_topic.id, sponsored_post: {title: RandomData.random_sentence, body: RandomData.random_paragraph, price: rand(999999999)}
@@ -49,9 +49,59 @@ RSpec.describe SponsoredPostController, type: :controller do
   end
 
   describe "GET #edit" do
-    it "returns http success" do
-      get :edit
+    it 'returns http success' do
+      get :edit, topic_id: my_topic.id, id: my_sponsored_post.id
       expect(response).to have_http_status(:success)
+    end
+    it 'renders the #edit view' do
+      get :edit, topic_id: my_topic.id, id: my_sponsored_post.id
+      expect(response).to render_template :edit
+    end
+    it 'assigns sponsored_post to be updated to @sponsored_post' do
+      get :edit, topic_id: my_topic.id, id: my_sponsored_post.id
+      sponsored_post_instance = assigns(:sponsored_post)
+      expect(sponsored_post_instance.id).to eq my_sponsored_post.id
+      expect(sponsored_post_instance.title).to eq my_sponsored_post.title
+      expect(sponsored_post_instance.body).to eq my_sponsored_post.body
+      expect(sponsored_post_instance.price).to eq my_sponsored_post.price
+    end
+  end
+
+  describe 'PUT update' do
+    it 'updates sponsored_post with expected attributes' do
+      new_title = RandomData.random_sentence
+      new_body = RandomData.random_paragraph
+      new_price=rand(999_999_999)
+
+       put :update, topic_id: my_topic.id, id: my_sponsored_post.id, sponsored_post: {title: new_title, body: new_body, price: new_price}
+
+      updated_sponsored_post = assigns(:sponsored_post)
+      expect(updated_sponsored_post.id).to eq my_sponsored_post.id
+      expect(updated_sponsored_post.title).to eq new_title
+      expect(updated_sponsored_post.body).to eq new_body
+      expect(updated_sponsored_post.price).to eq new_price
+    end
+
+    it 'redirects to the updated sponsored_post' do
+      new_title = RandomData.random_sentence
+      new_body = RandomData.random_paragraph
+      new_price=rand(999_999_999)
+
+       put :update, topic_id: my_topic.id, id: my_sponsored_post.id, sponsored_post: {title: new_title, body: new_body, price: new_price}
+       expect(response).to redirect_to [my_topic, my_sponsored_post]    
+    end
+  end
+
+  describe 'DELETE destroy' do
+    it 'deletes the sponsored_post' do
+      delete :destroy, topic_id: my_topic.id, id: my_sponsored_post.id
+      count = SponsoredPost.where(id: my_sponsored_post.id).size
+      expect(count).to eq 0
+    end
+
+    it "redirects to topic show" do
+       delete :destroy, topic_id: my_topic.id, id: my_sponsored_post.id
+       expect(response).to redirect_to my_topic
     end
   end
 
