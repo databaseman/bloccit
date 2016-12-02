@@ -36,3 +36,6 @@ source 'https://rubygems.org'
 
 # Twitter Bootstrap CSS framework
 gem 'bootstrap-sass'
+
+# Used for encrypting User passwords
+gem 'bcrypt'
