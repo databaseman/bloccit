@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
   end
- 
+
   def create
     user = User.find_by(email: params[:session][:email].downcase)
 
@@ -14,11 +14,10 @@ class SessionsController < ApplicationController
       render :new
     end
   end
- 
+
   def destroy
     destroy_session(current_user)
     flash[:notice] = "You've been signed out, come back soon!"
     redirect_to root_path
   end
-  
 end

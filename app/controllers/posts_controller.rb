@@ -1,7 +1,7 @@
 #
 class PostsController < ApplicationController
   before_action :require_sign_in, except: :show
-   
+
   def show
     @post = Post.find(params[:id])
   end
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build(post_params)
     @post.user = current_user
-    
+
     if @post.save # Calling database save/insert command
       flash[:notice] = 'Post was saved.'
       redirect_to [@topic, @post] # Redirecting to @post will direct the user to the posts show view.
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.assign_attributes(post_params)
-     
+
     if @post.save
       redirect_to [@post.topic, @post]
     else
@@ -52,9 +52,10 @@ class PostsController < ApplicationController
       render :show
     end
   end
-  
-   private
-   def post_params
-     params.require(:post).permit(:title, :body)
-   end  
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :body)
+  end
 end

@@ -3,7 +3,7 @@
 TO_DATE=`date +%m%d%Y_%H%M%S`
 PROGRAM=`basename $0 .sh`
 LOG_FILE=~/workspace/log/${PROGRAM}_${TO_DATE}.log
-RESULT_LIST=`find ~/workspace -name "*.rb"|egrep -iv "metadata|initializer|migrate|helpers|test"`
+RESULT_LIST=`find ~/workspace -name "*.rb"|egrep -iv "metadata|initializer|migrate|test"`
 for FILE in $RESULT_LIST  
 do
   echo >> $LOG_FILE

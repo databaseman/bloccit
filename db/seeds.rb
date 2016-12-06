@@ -8,29 +8,29 @@
 require 'random_data'
 
 # Create Unique Posts
-#Post.find_or_create_by(
+# Post.find_or_create_by(
 #  title:  'This is a unique Title',
 #  body:   'This is a unique paragraph'
-#)
+# )
 
 5.times do
-   User.create!(
-   name:     RandomData.random_name,
-   email:    RandomData.random_email,
-   password: RandomData.random_sentence
-   )
+  User.create!(
+    name:     RandomData.random_name,
+    email:    RandomData.random_email,
+    password: RandomData.random_sentence
+  )
 end
 users = User.all
- 
+
 # Create Topics
- 15.times do
-   Topic.create!(
-     name:         RandomData.random_sentence,
-     description:  RandomData.random_paragraph
-   )
- end
- topics = Topic.all
- 
+15.times do
+  Topic.create!(
+    name:         RandomData.random_sentence,
+    description:  RandomData.random_paragraph
+  )
+end
+topics = Topic.all
+
 # Create Posts
 20.times do
   Post.create!(
@@ -50,12 +50,21 @@ posts = Post.all
   )
 end
 
-user = User.first
-user.update_attributes!(
-   email: 'nguyen_ba_minh@yahoo.com', # replace this with your personal email
-   password: 'password'
+# Create an admin user
+admin = User.create!(
+  name:     'Admin User',
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
 )
- 
+
+# Create a member
+member = User.create!(
+  name:     'Member User',
+  email:    'member@example.com',
+  password: 'helloworld'
+)
+
 puts 'Seed finished'
 puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
