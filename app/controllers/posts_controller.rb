@@ -17,6 +17,8 @@ class PostsController < ApplicationController
     @post.body = params[:post][:body]
     @topic = Topic.find(params[:topic_id])
     @post.topic = @topic
+    @post.user = current_user
+    
     if @post.save # Calling database save/insert command
       flash[:notice] = 'Post was saved.'
       redirect_to [@topic, @post] # Redirecting to @post will direct the user to the posts show view.
