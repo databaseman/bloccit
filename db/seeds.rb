@@ -8,11 +8,20 @@
 require 'random_data'
 
 # Create Unique Posts
-Post.find_or_create_by(
-  title:  'This is a unique Title',
-  body:   'This is a unique paragraph'
-)
+#Post.find_or_create_by(
+#  title:  'This is a unique Title',
+#  body:   'This is a unique paragraph'
+#)
 
+5.times do
+   User.create!(
+   name:     RandomData.random_name,
+   email:    RandomData.random_email,
+   password: RandomData.random_sentence
+   )
+end
+users = User.all
+ 
 # Create Topics
  15.times do
    Topic.create!(
@@ -25,6 +34,7 @@ Post.find_or_create_by(
 # Create Posts
 20.times do
   Post.create!(
+    user:   users.sample,
     topic:  topics.sample,
     title:  RandomData.random_sentence,
     body:   RandomData.random_paragraph
@@ -40,7 +50,14 @@ posts = Post.all
   )
 end
 
+user = User.first
+user.update_attributes!(
+   email: 'nguyen_ba_minh@yahoo.com', # replace this with your personal email
+   password: 'password'
+)
+ 
 puts 'Seed finished'
+puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
