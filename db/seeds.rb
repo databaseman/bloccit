@@ -69,6 +69,14 @@ member = User.create!(
   password: 'password'
 )
 
+# Create a member with working email
+testMember = User.create!(
+  name:     'Minh User',
+  email:    'nguyen_ba_minh@yahoo.com',
+  password: 'password',
+  role:     'admin'
+)
+
 puts 'Seed finished'
 puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
