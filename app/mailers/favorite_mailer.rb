@@ -1,5 +1,5 @@
 class FavoriteMailer < ApplicationMailer
-  default from: "nguyen_ba_minh@yahoo.com"
+  default from: "minh.testing@gmail.com" # use a fake email here or DMARC security from email vendor will block you.
    def new_comment(user, post, comment)
  
      headers["Message-ID"] = "<comments/#{comment.id}@your-app-name.example>"
