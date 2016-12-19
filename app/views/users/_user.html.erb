@@ -1,15 +1,27 @@
-<div class="media-body">
-   <h2>Posts</h2>
-	<% if user.posts.any? %>
-   		<%= render user.posts %>
-	<% else %>
-   		<%= user.name %> has not submitted any posts yet.
-	<% end %>
+<h2>Posts</h2>
+<% if user_has_posts? %>
+   <%= render @user.posts %>
+<% else %>
+   <%= @user.name %> has not submitted any posts yet.
+<% end %>
 
-   <h2>Comments</h2>
-	<% if user.comments.any? %>
-   		<%= render user.comments %>
-	<% else %>
-   		<%= user.name %> has not submitted any comments yet.
-	<% end %> 
-</div>
+<h2>Comments</h2>
+<% if user_has_comments? %>
+   <%= render @user.comments %>
+<% else %>
+   <%= @user.name %> has not submitted any comments yet.
+<% end %> 
+
+<h2>Favorites</h2>
+<% if user_has_favorites? %>
+   <% @user.favorites.each do |f| %>
+      <div class="pull-left">
+         <%= image_tag current_user.avatar_url(48), class: "gravatar" %>
+         <b>Posts:</b> <%= f.post.title %> 
+         <b>Comments:</b> <%= f.post.comments.count %>  
+         <b>Votes:</b> <%= f.post.votes.count %>
+      </div>              
+   <% end %>
+<% else %>
+   <%= @user.name %> has no favorites.
+<% end %>
