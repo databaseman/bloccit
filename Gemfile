@@ -11,6 +11,7 @@ source 'https://rubygems.org'
  group :development do
    gem 'sqlite3'
    gem 'pry-rails'
+   gem 'byebug'
  end
  
 # To organize posts by topic we will need to build an association 
