@@ -14,9 +14,9 @@ This is a self contain application except for a notification feature which email
     Guest:	Can read anything on the site, but can't post until they sign up to become a member.
 
 The ability to switch from one role to another has not been implemented.
-But we can do it through db:seed for now.
+For testing purposes, an admin user (a@yahoo.com/password), and a member user (m@yahoo.com/password) have been created.
 
-**Technology**:  HTML, CSS, Ruby on Rails, Heroku Sendgrid mail server, ActionMailer client, Figaro to setup environment variables.
+**Technology**:  HTML, CSS, Ruby on Rails, Heroku Sendgrid mail server, ActionMailer client, and Figaro to setup environment variables.
 
 **Install Instruction**:
 
