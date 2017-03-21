@@ -13,6 +13,12 @@ require 'random_data'
 #  body:   'This is a unique paragraph'
 # )
 
+Vote.delete_all;
+Comment.delete_all;
+Post.delete_all;
+Topic.delete_all;
+User.delete_all;
+
 5.times do
   User.create!(
     name:     RandomData.random_name,
