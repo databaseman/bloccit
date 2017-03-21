@@ -29,7 +29,7 @@ end
 users = User.all
 
 # Create Topics
-15.times do
+10.times do
   Topic.create!(
     name:         RandomData.random_sentence,
     description:  RandomData.random_paragraph
@@ -38,7 +38,7 @@ end
 topics = Topic.all
 
 # Create Posts
-50.times do
+25.times do
   post = Post.create!(
     user:   users.sample,
     topic:  topics.sample,
