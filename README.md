@@ -16,7 +16,7 @@ This is a self contain application except for a notification feature which email
 The ability to switch from one role to another has not been implemented.
 For testing purposes, an admin user (a@yahoo.com/password), and a member user (m@yahoo.com/password) have been created.
 
-**Technology**:  HTML, CSS, Ruby on Rails, Heroku Sendgrid mail server, ActionMailer client, and Figaro to setup environment variables.
+**Technology**:  HTML, CSS, Ruby on Rails, Bootstrap, Sendgrid mail server, ActionMailer client, and Figaro to setup environment variables.
 
 **Install Instruction**:
 
@@ -31,7 +31,7 @@ to Heroku without having to update the id and password in config/application.yml
 
 Without last two steps, you won't be able to send email from development or production.
 
-The names used in the listed instruction (block-it; minh-blockit) are for instructional purposes only.
+The names used in the listed instruction (bloc-it; minh-blocit) are for instructional purposes only.
 Change it to your appropriate unique application name.
 
 
