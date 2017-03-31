@@ -14,7 +14,8 @@ This is a self contain application except for a notification feature which email
     Guest:	Can read anything on the site, but can't post until they sign up to become a member.
 
 The ability to switch from one role to another has not been implemented.
-For testing purposes, an admin user (a@yahoo.com/password), and a member user (m@yahoo.com/password) have been created.
+For testing purposes, member user (user[n]@yahoo.com/password) have been created;
+Where n is between 1 and 6;
 
 **Technology**:  HTML, CSS, Ruby on Rails, Bootstrap, Sendgrid mail server, ActionMailer client, and Figaro to setup environment variables.
 

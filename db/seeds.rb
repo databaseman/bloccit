@@ -19,13 +19,33 @@ Post.delete_all;
 Topic.delete_all;
 User.delete_all;
 
-5.times do
+#5.times do |n|
+#  name = "user-#{n+1}_"+RandomData.random_name
+#  email = "user-#{n+1}_"+RandomData.random_email
+#  User.create!(
+#    name:     name,
+#    email:    email,
+#    password: "password"
+#  )
+#end
+
+5.times do |n|
+  name = "user#{n+1}"
+  email = "user#{n+1}@yahoo.com"
   User.create!(
-    name:     RandomData.random_name,
-    email:    RandomData.random_email,
+    name:     name,
+    email:    email,
     password: "password"
   )
 end
+
+# Create an admin user
+admin = User.create!(
+  name:     'Admin User',
+  email:    'a@yahoo.com',
+  password: 'admin_password',
+  role:     'admin'
+)
 users = User.all
 
 # Create Topics
@@ -60,20 +80,6 @@ posts = Post.all
   )
 end
 
-# Create an admin user
-admin = User.create!(
-  name:     'Admin User',
-  email:    'a@yahoo.com',
-  password: 'password',
-  role:     'admin'
-)
-
-# Create a member
-member = User.create!(
-  name:     'Member User',
-  email:    'm@yahoo.com',
-  password: 'password'
-)
 
 puts 'Seed finished'
 puts "#{User.count} users created"
