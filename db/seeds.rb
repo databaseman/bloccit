@@ -29,20 +29,21 @@ User.delete_all;
 #  )
 #end
 
+# Members
 5.times do |n|
-  name = "user#{n+1}"
-  email = "user#{n+1}@yahoo.com"
+  name = "member#{n+1}"
+  email = "member#{n+1}@yahoo.com"
   User.create!(
     name:     name,
     email:    email,
-    password: "password"
+    password: "password",
   )
 end
 
 # Create an admin user
 admin = User.create!(
   name:     'Admin User',
-  email:    'a@yahoo.com',
+  email:    'admin@yahoo.com',
   password: 'admin_password',
   role:     'admin'
 )
